@@ -1,0 +1,10 @@
+<component name="libraryTable">
+  <library name="lib1">
+    <CLASSES>
+      <root url="jar://$PROJECT_DIR$/build/web/WEB-INF/lib/mariadb-java-client-3.3.2.jar!/" />
+      <root url="jar://$PROJECT_DIR$/build/web/WEB-INF/lib/hibernate-core-6.4.0.Final.jar!/" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES />
+  </library>
+</component>
