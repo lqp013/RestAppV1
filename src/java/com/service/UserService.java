@@ -88,7 +88,7 @@ public class UserService {
     }
     
     @GET  //el protocolo get.
-    @Path("/getUsersByYearBirthXML/{yearbirth}")  //http://localhost:8080/WebApplication1/resources/users/getUsersByYearBirthXML/1999
+    @Path("/getUsersByYearBirthXML/{yearbirth}")  //http://localhost:8080/WebApplication1/resources/users/getUsersByYearBirthXML/2000
     @Produces(MediaType.APPLICATION_XML)  //te produce algo de tipo xml.
     public List<User> getUsersByYearBirthXML(@PathParam("yearbirth") int yearbirth) {
         List<User> users = new ArrayList<>();
@@ -102,7 +102,7 @@ public class UserService {
     }
     
     @GET  //el protocolo get.
-    @Path("/getUsersByYearBirthJSON/{yearbirth}")  //http://localhost:8080/WebApplication1/resources/users/getUsersByYearBirthJSON/1999
+    @Path("/getUsersByYearBirthJSON/{yearbirth}")  //http://localhost:8080/WebApplication1/resources/users/getUsersByYearBirthJSON/2000
     @Produces(MediaType.APPLICATION_JSON)  //te produce algo de tipo xml.
     public List<User> getUsersByYearBirthJSON(@PathParam("yearbirth") int yearbirth) {
         List<User> users = new ArrayList<>();
@@ -140,18 +140,18 @@ public class UserService {
     @Path("/post/createUserJSON")  //http://localhost:8080/WebApplication1/resources/users/post/createUserJSON
     @Produces(MediaType.APPLICATION_JSON)  //te produce algo de tipo json.
     @Consumes(MediaType.APPLICATION_JSON)  //como es POST el usuario va a meter datos y hay que poner el post.
-    public List<User> createUserJSON(List<User> lu) {
-        List<User> r = new ArrayList<>();
+    public List<User> createUserJSON(List<User> users) {
+        List<User> usersAdded = new ArrayList<>();
         
         try (UserDAOimpl userDAOimpl = new UserDAOimpl();){
-            for (User user : lu) {
+            for (User user : users) {
                 if (userDAOimpl.insertUser(user)) {  //si este metodo devuelve true....
-                    r.add(user);  //añadimos el usuario a la lista.
+                    usersAdded.add(user);  //añadimos el usuario a la lista.
                 }
             }
         } catch(Exception ex) {
             System.err.println("ERROR: " + ex);
         }
-        return r;
+        return usersAdded;
     }
 }
